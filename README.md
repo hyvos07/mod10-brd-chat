@@ -93,3 +93,45 @@ loop {
 ```
 
 Penggunaan `tokio::select!` pada kedua sisi di aplikasi ini berguna untuk menerima event asinkronus yang terjadi terlebih dahulu, menerima pesan baru atau mengirim broadcast pada client di **server** maupun menerima input baru atau menerima pesan broadcast baru yang datang pada **client**. Dengan begitu, proses asinkronus akan lebih rapih dan tidak saling bertabrakan.
+
+
+## Modifying The Websocket Port
+
+### Server
+<picture>
+    <img src="img/server_port.png">
+</picture>
+
+### Client 1
+<picture>
+    <img src="img/client1_port.png">
+</picture>
+
+### Client 2
+<picture>
+    <img src="img/client2_port.png">
+</picture>
+
+<br>
+
+Untuk mengubah server agar berjalan di port 8080, maka perlu diubah bagian berikut:
+
+```rs
+let listener = TcpListener::bind("127.0.0.1:8080").await?;
+println!("listening on port 8080");
+```
+
+pada function main di `server.rs`. Selain itu, agar client juga dapat terhubung dengan benar pada server, perlu diubah ws_stream pada `client.rs` agar mengarah ke port yang benar setelah diubah ke 8080.
+
+```rs
+let (mut ws_stream, _) =
+    ClientBuilder::from_uri(Uri::from_static("ws://127.0.0.1:8080"))
+        .connect()
+        .await?;
+```
+
+Jika tidak dihubungkan dengan port yang sama dengan tempat server berjalan, maka koneksi tidak akan ditanggapi/ditolak sehingga timbul error dari program seperti berikut:
+
+```bash
+Error: Io(Os { code: 111, kind: ConnectionRefused, message: "Connection refused" })
+```
