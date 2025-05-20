@@ -25,7 +25,7 @@ async fn main() -> Result<(), tokio_websockets::Error> {
             Some(msg) = ws_stream.next() => {
                 let msg = msg?;
                 if msg.is_text() {
-                    println!("Chat from {}", msg.as_text().unwrap().to_string());
+                    println!("dnlmn chat # {}", msg.as_text().unwrap().to_string());
                 }
             }
             

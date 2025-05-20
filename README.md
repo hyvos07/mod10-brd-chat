@@ -135,3 +135,17 @@ Jika tidak dihubungkan dengan port yang sama dengan tempat server berjalan, maka
 ```bash
 Error: Io(Os { code: 111, kind: ConnectionRefused, message: "Connection refused" })
 ```
+
+## Small Changes - Add Some Information to Client
+
+<picture>
+    <img src="img/image.png">
+</picture>
+
+<br>
+
+Sebenarnya saya sudah menambah address pengirim pada chat sebelumnya, jadi saya hanya menambah semacam ***watermark*** yang menjadi pembeda pada program broadcast chat saya dengan lainnya.
+
+```
+dnlmn chat # 127.0.0.1:38058: skibidi
+```
