@@ -1,4 +1,4 @@
-# 🦀 Advanced Programming - Asynchronus
+# 🦀 Advanced Programming - Asynchronus (Broadcast Chat)
 
 **Nama**  : Daniel Liman <br>
 **NPM**   : 2306220753 <br>
